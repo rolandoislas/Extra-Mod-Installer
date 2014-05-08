@@ -55,12 +55,14 @@ public class Confirm extends JPanel implements ApplicationState {
 		installTextString = "Directory selected for installation:\n" + installDir + "\n";
 		installTextString += "\nWARNING: Any existing files will be overwritten.\n";
 		installTextString += "\nThe following mods will be installed to your mods folder:\n\n";
+		char bullet = '\u2022';
+		String preFix = "     " + Character.toString(bullet) + " ";
 		for(int i = 0; i < modList.size(); i++) {
-			installTextString += "     • " + modList.get(i) + "\n";
+			installTextString += preFix + modList.get(i) + "\n";
 		}
 		installTextString += "\n\nThe following configs will be installed to your config folder:\n\n";
 		for(int i = 0; i < configList.size(); i++) {
-			installTextString += "     • " + configList.get(i) + "\n";
+			installTextString += preFix + configList.get(i) + "\n";
 		}
 	}
 
