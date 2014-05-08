@@ -112,7 +112,7 @@ public class DirectoryNotFound extends JPanel implements ApplicationState{
 			JDialog dialog = new JDialog(frame, "Error");
 			dialog.setBounds(Main.screenWidth / 2 - POPUP_WIDTH / 2, Main.screenHeight / 2 - POPUP_HEIGHT / 2, POPUP_WIDTH, POPUP_HEIGHT);
 			dialog.setResizable(false);
-			JLabel message = new JLabel("    This directory does not contain a valid \"Attack of the BTeam\" installation.");
+			JLabel message = new JLabel("This directory does not contain a valid \"Attack of the BTeam\" installation.");
 			dialog.add(message);
 			dialog.setVisible(true);
 		} else {
