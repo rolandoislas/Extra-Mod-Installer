@@ -29,7 +29,7 @@ public class Download {
 		String specDir;
 		if(isMod) {
 			root = Main.MOD_ROOT_URL;
-			specDir = "mod";
+			specDir = "mods";
 		} else {
 			root = Main.CONFIG_ROOT_URL;
 			specDir = "config";
