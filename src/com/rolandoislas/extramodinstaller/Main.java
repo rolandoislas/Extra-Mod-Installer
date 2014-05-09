@@ -1,5 +1,6 @@
 package com.rolandoislas.extramodinstaller;
 
+import java.awt.EventQueue;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
@@ -26,7 +27,21 @@ public class Main extends StateBasedApplication{
 	public static int screenHeight;
 	public static String defaultDir;
 
-	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Main window = new Main();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
 	/**
 	 * Create the application.
