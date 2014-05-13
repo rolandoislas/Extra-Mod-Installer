@@ -1,39 +1,19 @@
 package com.rolandoislas.extramodinstaller.util;
 
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.util.HashMap;
 
 import javax.swing.JFrame;
 
-import com.rolandoislas.extramodinstaller.Main;
-
 public class StateBasedApplication {
 	
 	private HashMap<Integer, ApplicationState> stateMap;
-	private static JFrame frame;
+	public JFrame frame;
 	private Dimension windowPos;
 	private int windowWidth;
 	private int windowHeight;
 	private String windowTitle;
 	private int activeState;
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					@SuppressWarnings("unused")
-					Main window = new Main();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	public StateBasedApplication(String title) {
 		stateMap = new HashMap<Integer, ApplicationState>();

@@ -7,17 +7,19 @@ import java.util.Scanner;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.rolandoislas.extramodinstaller.util.Config;
 
 public class JSON {
 	
 	private JsonParser jsonParser = new JsonParser();
+	private JsonObject config = new Config().getConfig();
 	
 	public JSON() {
 		
 	}
 	
 	public JsonObject getList() {
-		String requestString = com.rolandoislas.extramodinstaller.Main.LIST_URL;
+		String requestString = config.get("listURL").getAsString();
 		URL requestURL = null;
 		try {
 			requestURL = new URL(requestString);

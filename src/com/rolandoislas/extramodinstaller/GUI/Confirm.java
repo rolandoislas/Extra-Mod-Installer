@@ -36,7 +36,7 @@ public class Confirm extends JPanel implements ApplicationState {
 	private static final int ID = 2;
 	private File installDir;
 	private String installTextString;
-	private ModList ml = new ModList();
+	private ModList ml;
 	private StateBasedApplication sba;
 
 	/**
@@ -45,8 +45,6 @@ public class Confirm extends JPanel implements ApplicationState {
 	 */
 	public Confirm(File directory) {
 		installDir = directory;
-		generateInstallTextString();
-		createComponents();
 	}
 	
 	private void generateInstallTextString() {
@@ -123,7 +121,7 @@ public class Confirm extends JPanel implements ApplicationState {
 	}
 
 	public Confirm() {
-		this(new File(Main.defaultDir));
+		this(Main.defaultDir);
 	}
 
 	@Override
@@ -134,6 +132,9 @@ public class Confirm extends JPanel implements ApplicationState {
 	@Override
 	public Container initialize(StateBasedApplication sba, JFrame frame) {
 		this.sba = sba;
+		ml = new ModList();
+		generateInstallTextString();
+		createComponents();
 		return this;
 	}
 }
