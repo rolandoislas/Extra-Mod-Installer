@@ -45,8 +45,6 @@ public class Confirm extends JPanel implements ApplicationState {
 	 */
 	public Confirm(File directory) {
 		installDir = directory;
-		generateInstallTextString();
-		createComponents();
 	}
 	
 	private void generateInstallTextString() {
@@ -134,6 +132,8 @@ public class Confirm extends JPanel implements ApplicationState {
 	@Override
 	public Container initialize(StateBasedApplication sba, JFrame frame) {
 		this.sba = sba;
+		generateInstallTextString();
+		createComponents();
 		return this;
 	}
 }
