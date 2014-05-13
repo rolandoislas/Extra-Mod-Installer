@@ -20,10 +20,10 @@ public class Install extends SwingWorker<Void,Void> {
 		this.textArea = textArea;
 	}
 
-	private void doInstall() {
+	private void doInstall() throws Exception {
 		addToConsole("Starting install.\n");
-		installMods();
-		installConfigs();
+		installFiles("mods");
+		installFiles("config");
 		addToConsole("\nFinished.\n");
 	}
 
@@ -33,31 +33,26 @@ public class Install extends SwingWorker<Void,Void> {
 		textArea.setCaretPosition(pos);
 	}
 
-	private void installConfigs() {
-		addToConsole("\nDownloading config.\n\n");
-		Map<Integer, String> map = modList.getConfigListMap();
-		for(int i = 0; i < map.size(); i++) {
-			String fileName = map.get(i);
-			fileName = fileName.substring(1, fileName.length() - 1);
-			addToConsole("-Downloading " + map.get(i) + "\n");
-			Download dl = new Download(installDir, map.get(i), false);
-			do {
-				dl.get();
-			} while (dl.isDownloading());
+	private void installFiles(String fileType) throws Exception {
+		addToConsole("\nDownloading " + fileType + ".\n\n");
+		Map<Integer, String> map;
+		if(fileType.equals("mods")) {
+			map = modList.getModListMap();
+		} else {
+			map = modList.getConfigListMap();
 		}
-	}
-
-	private void installMods() {
-			addToConsole("\nDownloading mods.\n\n");
-		Map<Integer, String> map = modList.getModListMap();
 		for(int i = 0; i < map.size(); i++) {
-			String fileName = map.get(i);
-			fileName = fileName.substring(1, fileName.length() - 1);
 			addToConsole("-Downloading " + map.get(i) + "\n");
-			Download dl = new Download(installDir, map.get(i), true);
+			Download dl = new Download(installDir, map.get(i), fileType.equals("mods"));
 			do {
-				dl.get();
+				try {
+					dl.get();
+				} catch (Exception e) {
+					addToConsole("--Failed to download " + map.get(i) + ".");
+					throw e;
+				}
 			} while (dl.isDownloading());
+			addToConsole("--Successfully downloaded " + map.get(i) + ".");
 		}
 	}
 

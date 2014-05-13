@@ -25,7 +25,7 @@ public class Download {
 		isDownloading = false;
 	}
 
-	public void get() {
+	public void get() throws IOException {
 		// Set root for config or mod
 		String root;
 		String specDir;
@@ -52,7 +52,7 @@ public class Download {
 				// Begin transfer
 				transfer(in, out);
 			} catch (IOException e) {
-				e.printStackTrace();
+				throw e;
 			} finally {
 				// Close streams
 				if (in != null) {
