@@ -22,7 +22,7 @@ public class Main extends StateBasedApplication{
 	private OS OS = new OS();
 	public static int screenWidth;
 	public static int screenHeight;
-	public static String defaultDir;
+	public static File defaultDir;
 
 	/**
 	 * Launch the application.
@@ -73,7 +73,7 @@ public class Main extends StateBasedApplication{
 	}
 
 	public static boolean defaultDirectoryExists() {
-		File file = new File(defaultDir);
+		File file = defaultDir;
 		return file.exists();
 	}
 

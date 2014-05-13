@@ -123,7 +123,7 @@ public class Confirm extends JPanel implements ApplicationState {
 	}
 
 	public Confirm() {
-		this(new File(Main.defaultDir));
+		this(Main.defaultDir);
 	}
 
 	@Override
