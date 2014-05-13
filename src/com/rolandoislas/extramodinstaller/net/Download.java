@@ -30,10 +30,10 @@ public class Download {
 		String root;
 		String specDir;
 		if(isMod) {
-			root = config.get("modRootURL").toString();
+			root = config.get("modRootURL").getAsString();
 			specDir = "mods";
 		} else {
-			root = config.get("configRootURL").toString();
+			root = config.get("configRootURL").getAsString();
 			specDir = "config";
 		}
 		File file = new File(installDir + "/" + specDir + "/" + fileName);
