@@ -14,6 +14,7 @@ import javax.swing.UIManager;
 
 import com.rolandoislas.extramodinstaller.Main;
 import com.rolandoislas.extramodinstaller.util.ApplicationState;
+import com.rolandoislas.extramodinstaller.util.Popup;
 import com.rolandoislas.extramodinstaller.util.StateBasedApplication;
 
 import java.awt.event.ActionListener;
@@ -109,6 +110,7 @@ public class DirectoryFound extends JPanel implements ApplicationState {
 	protected void handleClick(String selection) {
 		if(selection.equals("yes")) {
 			sba.setState(2);
+				new Popup("This directory does not contain a valid \"Attack of the BTeam\" installation.", "Error");
 		} else if(selection.equals("no")) {
 			sba.initState(new DirectoryNotFound(true));
 			sba.setState(1);
