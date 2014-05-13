@@ -14,11 +14,13 @@ import javax.swing.UIManager;
 
 import com.rolandoislas.extramodinstaller.Main;
 import com.rolandoislas.extramodinstaller.util.ApplicationState;
+import com.rolandoislas.extramodinstaller.util.Directory;
 import com.rolandoislas.extramodinstaller.util.Popup;
 import com.rolandoislas.extramodinstaller.util.StateBasedApplication;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JTextArea;
 
 public class DirectoryFound extends JPanel implements ApplicationState {
@@ -109,8 +111,12 @@ public class DirectoryFound extends JPanel implements ApplicationState {
 	
 	protected void handleClick(String selection) {
 		if(selection.equals("yes")) {
-			sba.setState(2);
+			Directory dir = new Directory(Main.defaultDir);
+			if(dir.isValid()) {
+				sba.setState(2);
+			} else {
 				new Popup("This directory does not contain a valid \"Attack of the BTeam\" installation.", "Error");
+			}
 		} else if(selection.equals("no")) {
 			sba.initState(new DirectoryNotFound(true));
 			sba.setState(1);

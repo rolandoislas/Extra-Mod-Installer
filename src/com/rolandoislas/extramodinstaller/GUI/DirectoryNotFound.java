@@ -1,6 +1,5 @@
 package com.rolandoislas.extramodinstaller.GUI;
 
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,8 +15,8 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 
-import com.rolandoislas.extramodinstaller.Main;
 import com.rolandoislas.extramodinstaller.util.ApplicationState;
+import com.rolandoislas.extramodinstaller.util.Directory;
 import com.rolandoislas.extramodinstaller.util.Popup;
 import com.rolandoislas.extramodinstaller.util.StateBasedApplication;
 
@@ -101,25 +100,15 @@ public class DirectoryNotFound extends JPanel implements ApplicationState{
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 		int returnVal = fc.showOpenDialog(frame);
 		if(returnVal == JFileChooser.APPROVE_OPTION) {
-			File dir = fc.getSelectedFile();
-			validateDirectory(dir);
-		}
-	}
-
-	private void validateDirectory(File dir) {
-		File modDir = new File(dir + "/mods");
-		File configDir = new File(dir + "/config");
-		if(!modDir.exists() || !configDir.exists()) {
-			JDialog dialog = new JDialog(frame, "Error");
-			dialog.setBounds(Main.screenWidth / 2 - POPUP_WIDTH / 2, Main.screenHeight / 2 - POPUP_HEIGHT / 2, POPUP_WIDTH, POPUP_HEIGHT);
-			dialog.setResizable(false);
-			JLabel message = new JLabel("This directory does not contain a valid \"Attack of the BTeam\" installation.");
-			dialog.add(message);
-			dialog.setVisible(true);
-		} else {
-			sba.initState(new Confirm(dir));
-			sba.setState(2);
+			File file = fc.getSelectedFile();
+			Directory dir = new Directory(file);
+			if(dir.isValid()) {
+				sba.initState(new Confirm(dir));
+				sba.setState(2);
+			}
+			else {
 				new Popup("This directory does not contain a valid \"Attack of the BTeam\" installation.", POPUP_WIDTH, POPUP_HEIGHT, "Error");
+			}
 		}
 	}
 
