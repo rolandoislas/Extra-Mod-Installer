@@ -1,8 +1,22 @@
 ﻿package com.rolandoislas.extramodinstaller.util;
 
+import java.io.File;
+
+import com.google.gson.JsonObject;
+
 public class OS {
 	
-	private static String OSS = System.getProperty("os.name").toLowerCase();
+	private static String OSS;
+	private static String homeDir;
+	private static JsonObject config;
+	private JsonObject defaultInstallLocation;
+	
+	public OS() {
+		OSS = System.getProperty("os.name").toLowerCase();
+		homeDir = System.getProperty("user.home");
+		config = new Config().getConfig();
+		defaultInstallLocation = config.get("defaultInstallLocation").getAsJsonObject();
+	}
 	
 	public String getSys() {
 		if(isWindows()) {
@@ -27,18 +41,25 @@ public class OS {
 		return (OSS.indexOf("win") >= 0);
 	}
 
-	public String getDir() {
-		String homeDir = System.getProperty("user.home");
-		String technicRoot = "/modpacks/attack-of-the-bteam";
+	public File getDir() {
 		String sys = getSys();
 		if(sys.equalsIgnoreCase("win")) {
-			return homeDir + "\\AppData\\Roaming\\.technic" + technicRoot.replace("/", "\\");
+			return getOSDir("win");
 		} else if(sys.equalsIgnoreCase("mac")) {
-			return homeDir + "/Library/Application Support/technic" + technicRoot;
+			return getOSDir("mac");
 		} else if(sys.equalsIgnoreCase("nix")) {
-			return homeDir + "/.technic" + technicRoot;
+			return getOSDir("nix");
 		}
 		return null;
+	}
+
+	private File getOSDir(String OS) {
+		JsonObject OSDefaultDir = defaultInstallLocation.get(OS).getAsJsonObject();
+		String directory = OSDefaultDir.get("directory").getAsString();
+		if(OSDefaultDir.get("useHomeDirectory").getAsBoolean()) {
+			return new File(homeDir + "/" + directory);
+		}
+		return new File(directory);
 	}
 	
 }

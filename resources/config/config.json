@@ -1,0 +1,19 @@
+{
+  "listURL": "",
+  "modRootURL": "",
+  "configRootURL": "",
+  "defaultInstallLocation": {
+  	"win": {
+  		"useHomeDirectory": true,
+  		"directory": ""
+  	},
+  	"osx": {
+  		useHomeDirectory: true,
+  		"directory": ""
+  	},
+  	"nix": {
+  		useHomeDirectory: true,
+  		"directory": ""
+  	}
+  }
+}

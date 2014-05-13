@@ -22,14 +22,33 @@ The mod list is a simple JSON file that contains display names, files names, and
 }
 ```
 
-URLs for the mod list, mod root directory, and config root directory should be placed in the configuration file.  (Not yet implemented, but should be in version 0.2)
+# Config
+If using a precompiled binary, the configuration file (config.json) can be found within the jar in a folder named config.
+
+The following is an example of a populated config.json.
 ```
 {
-  "modlistURL": "",
-  "modRootURL": "",
-  "configRootURL": ""
+  "listURL": "http://example.com/list.json",
+  "modRootURL": "http://example.com/mods/",
+  "configRootURL": "http://example.com/config/",
+  "defaultInstallLocation": {
+      "win": {
+  		"useHomeDirectory": true,
+  		"directory": "/install/path/from/users/home/directory/"
+  	},
+  	"osx": {
+  		useHomeDirectory: false,
+  		"directory": "/full/install/path/"
+  	},
+  	"nix": {
+  		useHomeDirectory: true,
+  		"directory": "/.someLauncher/install/path/"
+  	}
+  }
 }
 ```
+With this config, the default install directory for Windows resolves to "C:\Users\<username>\install\path\from\users\home\directory\".
+
 
 # Dependencies
 google-gson <https://code.google.com/p/google-gson/>
