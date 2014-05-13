@@ -18,9 +18,6 @@ public class Main extends StateBasedApplication{
 	private static final double VERSION = 0.1;
 	private static final int WIDTH = 450;
 	private static final int HEIGHT = 350;
-	public static final String LIST_URL = "http://minecraft.rolandoislas.com/inc/mod/list.json";
-	public static final String MOD_ROOT_URL = "http://minecraft.rolandoislas.com/inc/mod/mod/";
-	public static final String CONFIG_ROOT_URL = "http://minecraft.rolandoislas.com/inc/mod/config/";
 	
 	private OS OS = new OS();
 	public static int screenWidth;

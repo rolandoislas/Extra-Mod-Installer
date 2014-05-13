@@ -7,7 +7,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
-import com.rolandoislas.extramodinstaller.Main;
+import com.google.gson.JsonObject;
+import com.rolandoislas.extramodinstaller.util.Config;
 
 public class Download {
 	
@@ -15,6 +16,7 @@ public class Download {
 	private String fileName;
 	private boolean isMod;
 	private boolean isDownloading;
+	private JsonObject config = new Config().getConfig();
 
 	public Download(File installDir, String fileName, boolean isMod) {
 		this.installDir = installDir;
@@ -28,10 +30,10 @@ public class Download {
 		String root;
 		String specDir;
 		if(isMod) {
-			root = Main.MOD_ROOT_URL;
+			root = config.get("modRootURL").toString();
 			specDir = "mods";
 		} else {
-			root = Main.CONFIG_ROOT_URL;
+			root = config.get("configRootURL").toString();
 			specDir = "config";
 		}
 		File file = new File(installDir + "/" + specDir + "/" + fileName);
