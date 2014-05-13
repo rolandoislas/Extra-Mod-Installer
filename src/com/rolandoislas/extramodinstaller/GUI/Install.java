@@ -81,7 +81,4 @@ public class Install extends JPanel implements ApplicationState{
 		return this;
 	}
 
-	public static int getIDP() {
-		return ID;
-	}
 }
