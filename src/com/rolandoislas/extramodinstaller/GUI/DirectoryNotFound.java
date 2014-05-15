@@ -107,7 +107,7 @@ public class DirectoryNotFound extends JPanel implements ApplicationState{
 				sba.setState(2);
 			}
 			else {
-				new Popup("This directory does not contain a valid \"Attack of the BTeam\" installation.", POPUP_WIDTH, POPUP_HEIGHT, "Error");
+				new Popup("This is not a valid installation directory.", POPUP_WIDTH, POPUP_HEIGHT, "Error");
 			}
 		}
 	}

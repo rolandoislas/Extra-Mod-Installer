@@ -115,7 +115,7 @@ public class DirectoryFound extends JPanel implements ApplicationState {
 			if(dir.isValid()) {
 				sba.setState(2);
 			} else {
-				new Popup("This directory does not contain a valid \"Attack of the BTeam\" installation.", "Error");
+				new Popup("This is not a valid installation directory.", "Error");
 			}
 		} else if(selection.equals("no")) {
 			sba.initState(new DirectoryNotFound(true));
