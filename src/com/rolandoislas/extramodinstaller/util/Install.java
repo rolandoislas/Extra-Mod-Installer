@@ -48,11 +48,11 @@ public class Install extends SwingWorker<Void,Void> {
 				try {
 					dl.get();
 				} catch (Exception e) {
-					addToConsole("--Failed to download " + map.get(i) + ".");
+					addToConsole("--Failed to download " + map.get(i) + ".\n");
 					throw e;
 				}
 			} while (dl.isDownloading());
-			addToConsole("--Successfully downloaded " + map.get(i) + ".");
+			addToConsole("--Successfully downloaded " + map.get(i) + ".\n");
 		}
 	}
 
