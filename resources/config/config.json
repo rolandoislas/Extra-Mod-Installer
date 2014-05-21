@@ -4,16 +4,16 @@
   "configRootURL": "",
   "defaultInstallLocation": {
   	"win": {
-  		"useHomeDirectory": true,
-  		"directory": ""
+  	  "useHomeDirectory": true,
+  	  "directory": ""
   	},
   	"osx": {
-  		useHomeDirectory: true,
-  		"directory": ""
+  	  useHomeDirectory: true,
+  	  "directory": ""
   	},
   	"nix": {
-  		useHomeDirectory: true,
-  		"directory": ""
+  	  useHomeDirectory: true,
+      "directory": ""
   	}
   }
 }
