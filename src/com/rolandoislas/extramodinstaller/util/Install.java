@@ -1,11 +1,13 @@
 package com.rolandoislas.extramodinstaller.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Map;
 
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 
+import com.google.gson.JsonObject;
 import com.rolandoislas.extramodinstaller.net.Download;
 
 public class Install extends SwingWorker<Void,Void> {
@@ -13,6 +15,7 @@ public class Install extends SwingWorker<Void,Void> {
 	private ModList modList;
 	private File installDir;
 	private JTextArea textArea;
+	private JsonObject config = new Config().getConfig();
 
 	public Install(File installDir, ModList modList, JTextArea textArea) {
 		this.installDir = installDir;
@@ -24,7 +27,21 @@ public class Install extends SwingWorker<Void,Void> {
 		addToConsole("Starting install.\n");
 		installFiles("mods");
 		installFiles("config");
+		configureLauncher();
 		addToConsole("\nFinished.\n");
+	}
+
+	private void configureLauncher() {
+		boolean isAtLauncher = config.get("launcher").getAsJsonObject().get("isAtLauncher").getAsBoolean();
+		if(isAtLauncher == true) {
+			addToConsole("Updating ATLauncher instance mod list.");
+			try {
+				new ATLauncher(installDir).updateModList();
+			} catch (FileNotFoundException e) {
+				addToConsole("Failed to update ATLauncher mod list.");
+				e.printStackTrace();
+			}
+		}
 	}
 
 	private void addToConsole(String string) {

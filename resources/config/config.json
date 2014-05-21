@@ -15,5 +15,8 @@
   	  useHomeDirectory: true,
       "directory": ""
   	}
+  },
+  "launcher": {
+  	"isAtLauncher": false
   }
 }
