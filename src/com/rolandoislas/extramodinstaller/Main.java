@@ -15,7 +15,7 @@ import com.rolandoislas.extramodinstaller.util.StateBasedApplication;
 public class Main extends StateBasedApplication{
 
 	public static final String APP_NAME = "Extra Mod Installer";
-	private static final double VERSION = 0.2;
+	private static final double VERSION = 0.3;
 	private static final int WIDTH = 450;
 	private static final int HEIGHT = 350;
 	
