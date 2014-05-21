@@ -32,18 +32,21 @@ The following is an example of a populated config.json.
   "modRootURL": "http://example.com/mods/",
   "configRootURL": "http://example.com/config/",
   "defaultInstallLocation": {
-      "win": {
-  		"useHomeDirectory": true,
-  		"directory": "/install/path/from/users/home/directory/"
+    "win": {
+  	  "useHomeDirectory": true,
+  	  "directory": "/install/path/from/users/home/directory/"
   	},
   	"osx": {
-  		useHomeDirectory: false,
-  		"directory": "/full/install/path/"
+  	  "useHomeDirectory": false,
+  	  "directory": "/full/install/path/"
   	},
   	"nix": {
-  		useHomeDirectory: true,
-  		"directory": "/.someLauncher/install/path/"
+  	  "useHomeDirectory": true,
+      "directory": "/.someLauncher/install/path/"
   	}
+  },
+  "launcher" {
+    "isAtLauncher": false
   }
 }
 ```
