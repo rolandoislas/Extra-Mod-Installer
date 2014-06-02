@@ -22,18 +22,19 @@ The mod list is a simple JSON file that contains display names, files names, and
     ]
   },
   "remove": {
-    "mod": 
-    {
-      "displayName": "",
-      "fileName": "",
-      "install": ""
-    },
-    "config": 
-    {
-      "displayName": "",
-      "fileName": "",
-      "install": ""
-    }
+    "mod": [
+      {
+        "displayName": "",
+        "fileName": ""
+      }
+    ],
+    "config": [
+      {
+        "displayName": "",
+        "fileName": "",
+        "install": ""
+      }
+    ]
   }
 }
 ```
