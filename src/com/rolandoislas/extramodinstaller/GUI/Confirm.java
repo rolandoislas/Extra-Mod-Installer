@@ -50,6 +50,8 @@ public class Confirm extends JPanel implements ApplicationState {
 	private void generateInstallTextString() {
 		Map<Integer, String> modList = ml.getModListMap();
 		Map<Integer, String> configList = ml.getConfigListMap();
+		Map<Integer, String> modListRemove = ml.getModListMap("remove");
+		Map<Integer, String> configListRemove = ml.getConfigListMap("remove");
 		installTextString = "Directory selected for installation:\n" + installDir + "\n";
 		installTextString += "\nWARNING: Any existing files will be overwritten.\n";
 		installTextString += "\nThe following mods will be installed to your mods folder:\n\n";
@@ -61,6 +63,14 @@ public class Confirm extends JPanel implements ApplicationState {
 		installTextString += "\n\nThe following configs will be installed to your config folder:\n\n";
 		for(int i = 0; i < configList.size(); i++) {
 			installTextString += preFix + configList.get(i) + "\n";
+		}
+		installTextString += "\n\nThe following mods will be deleted from your mods folder:\n\n";
+		for(int i = 0; i < modListRemove.size(); i++) {
+			installTextString += preFix + modListRemove.get(i) + "\n";
+		}
+		installTextString += "\n\nThe following configs will be deleted from your config folder:\n\n";
+		for(int i = 0; i < configListRemove.size(); i++) {
+			installTextString += preFix + configListRemove.get(i) + "\n";
 		}
 	}
 
