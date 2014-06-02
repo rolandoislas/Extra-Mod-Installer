@@ -6,19 +6,36 @@ The mod list is a simple JSON file that contains display names, files names, and
 
 ```
 {
-  "mod": [
-    {
-      "displayName": "",
-      "fileName": ""
-    }
-  ],
-  "config": [
-    {
-      "displayName": "",
-      "fileName": "",
-      "install": ""
-    }
-  ]
+  "install": {
+    "mod": [
+      {
+        "displayName": "",
+        "fileName": ""
+      }
+    ],
+    "config": [
+      {
+        "displayName": "",
+        "fileName": "",
+        "install": ""
+      }
+    ]
+  },
+  "remove": {
+    "mod": [
+      {
+        "displayName": "",
+        "fileName": ""
+      }
+    ],
+    "config": [
+      {
+        "displayName": "",
+        "fileName": "",
+        "install": ""
+      }
+    ]
+  }
 }
 ```
 
@@ -33,7 +50,7 @@ The following is an example of a populated config.json.
   "configRootURL": "http://example.com/config/",
   "defaultInstallLocation": {
     "win": {
-  	  "useHomeDirectory": true,
+        "useHomeDirectory": true,
   	  "directory": "/install/path/from/users/home/directory/"
   	},
   	"osx": {
