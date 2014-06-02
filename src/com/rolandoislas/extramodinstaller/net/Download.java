@@ -15,14 +15,12 @@ public class Download {
 	private File installDir;
 	private String fileName;
 	private boolean isMod;
-	private boolean isDownloading;
 	private JsonObject config = new Config().getConfig();
 
 	public Download(File installDir, String fileName, boolean isMod) {
 		this.installDir = installDir;
 		this.fileName = fileName;
 		this.isMod = isMod;
-		isDownloading = false;
 	}
 
 	public void get() throws IOException {
@@ -67,7 +65,6 @@ public class Download {
 				}
 			}
 		}
-		isDownloading = false;
 	}
 
 	private void transfer(InputStream in, OutputStream out) throws IOException{
@@ -76,10 +73,6 @@ public class Download {
 		while ((bytesRead = in.read(buffer)) > 0) {
 			out.write(buffer, 0, bytesRead);
 		}
-	}
-
-	public boolean isDownloading() {
-		return isDownloading;
 	}
 
 }
