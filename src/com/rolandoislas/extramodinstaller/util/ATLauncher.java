@@ -37,9 +37,7 @@ public class ATLauncher {
 	}
 
 	public void updateModList() throws FileNotFoundException {
-		System.out.println("in");
 		String instance = addModsToList();
-		System.out.println("out");
 		writeInstance(instance);
 	}
 
@@ -59,7 +57,6 @@ public class ATLauncher {
 				instance.get("mods").getAsJsonArray().add(modElement);
 			}
 		}
-		System.out.println(instance.toString());
 		return instance.toString();
 	}
 
