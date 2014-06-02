@@ -61,14 +61,12 @@ public class Install extends SwingWorker<Void,Void> {
 		for(int i = 0; i < map.size(); i++) {
 			addToConsole("-Downloading " + map.get(i) + "\n");
 			Download dl = new Download(installDir, map.get(i), fileType.equals("mods"));
-			do {
 				try {
 					dl.get();
 				} catch (Exception e) {
 					addToConsole("--Failed to download " + map.get(i) + ".\n");
 					throw e;
 				}
-			} while (dl.isDownloading());
 			addToConsole("--Successfully downloaded " + map.get(i) + ".\n");
 		}
 	}
