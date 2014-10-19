@@ -1,4 +1,4 @@
-﻿package com.rolandoislas.extramodinstaller.util;
+package com.rolandoislas.extramodinstaller.util;
 
 import java.io.File;
 
