@@ -2,4 +2,4 @@ bin/
 .classpath
 .project
 .settings/
-resources/config/configTest.json
+src/main/resources/config/configTest.json
